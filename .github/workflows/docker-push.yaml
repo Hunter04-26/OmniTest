@@ -17,9 +17,9 @@ on:
       ecrName:
          required: true
          description: name of ecr
-      nugetToken:
-         description: Nuget auth Token
-         required: true
+      # nugetToken:
+      #    description: Nuget auth Token
+      #    required: true
       
 jobs:
   buildandpush:
@@ -39,7 +39,7 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
       
       - name: dockerBuild
-        run: docker --build-arg TOKEN=${{inputs.nugetToken}} --file ${{inpts.dockerFilePath}} --tag ${{inputs.ecrHost}}/${{inputs.ecrName}}
+        run: docker build -t ${{inputs.ecrHost}}/${{inputs.ecrName}} .
 
       - name: dockerPush
-        run: docker push ${{inpits.ecrHost}}/${{inputs.ecrName}}
+        run: docker push ${{inputs.ecrHost}}/${{inputs.ecrName}}

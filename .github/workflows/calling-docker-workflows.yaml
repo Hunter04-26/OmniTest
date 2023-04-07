@@ -1,0 +1,16 @@
+name: Test the docker workflows
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  BuildandPush:
+    uses: .\.github\workflows\docker-push-reusable-workflow.yaml
+    with:
+      AWSRoleToAssume: arn:aws:iam::916080180725:root
+      AWSRegion: us-east-1
+      dockerFilePath: Dockerfile
+      ecrHost: 916080180725.dkr.ecr.us-east-1.amazonaws.com
+      ecrName: diliptest
