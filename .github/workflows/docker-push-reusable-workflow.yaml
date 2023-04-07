@@ -1,0 +1,45 @@
+name: GitHub Actions Demo
+on:
+  workflow_call:
+    inputs:
+      AWSRoleToAssume:
+        required: true 
+        description: IAM Role to use 
+      AWSRegion:
+        default: us-east-2 
+        description: path to Docker file
+      dockerFilePath:
+        required: true 
+        description: path to Docker file
+      ecrHost:
+         description: ECR hostname
+         required: true
+      ecrName:
+         required: true
+         description: name of ecr
+      nugetToken:
+         description: Nuget auth Token
+         required: true
+      
+jobs:
+  buildandpush:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          role-to-assume: ${{ inputs.AWSRoleToAssume }}
+          aws-region: ${{ inputs.AWSRegion }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+      
+      - name: dockerBuild
+        run: docker --build-arg TOKEN=${{inputs.nugetToken}} --file ${{inpts.dockerFilePath}} --tag ${{inputs.ecrHost}}/${{inputs.ecrName}}
+
+      - name: dockerPush
+        run: docker push ${{inpits.ecrHost}}/${{inputs.ecrName}}
