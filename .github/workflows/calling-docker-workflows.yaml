@@ -7,7 +7,7 @@ on:
 
 jobs:
   BuildandPush:
-    uses: .\.github/workflows/docker-push.yaml
+    uses: ./.github/workflows/docker-push.yaml
     with:
       AWSRoleToAssume: arn:aws:iam::916080180725:root
       AWSRegion: us-east-1
