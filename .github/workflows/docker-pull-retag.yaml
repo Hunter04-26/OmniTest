@@ -5,18 +5,23 @@ on:
       AWSRoleToAssume:
         required: true 
         description: IAM Role to use 
+        type: string
       AWSRegion:
         default: us-east-2 
         description: path to Docker file
+        type: string
       toEcrHost:
         description: ECR hostname
         required: true
+        type: string
       ecrName:
         required: true
         description: name of ecr
+        type: string
       fromecrHost:
         description: ECR hostname
         required: true
+        type: string
 
       
 jobs:
