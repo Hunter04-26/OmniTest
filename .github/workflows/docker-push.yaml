@@ -38,6 +38,8 @@ jobs:
         with:
           role-to-assume: ${{ inputs.AWSRoleToAssume }}
           aws-region: ${{ inputs.AWSRegion }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
 
       - name: Login to Amazon ECR
         id: login-ecr

@@ -13,7 +13,7 @@ jobs:
   BuildandPush:
     uses: ./.github/workflows/docker-push.yaml
     with:
-      AWSRoleToAssume: arn:aws:iam::916080180725:root
+      AWSRoleToAssume: arn:aws:iam::916080180725:role/dilip-adminaccess
       AWSRegion: us-east-1
       dockerFilePath: Dockerfile
       ecrHost: 916080180725.dkr.ecr.us-east-1.amazonaws.com
@@ -22,7 +22,7 @@ jobs:
     needs: BuildandPush
     uses: ./.github/workflows/docker-pull-retag.yaml
     with:
-      AWSRoleToAssume: arn:aws:iam::916080180725:root
+      AWSRoleToAssume: arn:aws:iam::916080180725:role/dilip-adminaccess
       AWSRegion: us-east-1
       fromecrHost: 916080180725.dkr.ecr.us-east-1.amazonaws.com
       toecrHost: 916080180725.dkr.ecr.us-east-1.amazonaws.com
