@@ -41,8 +41,14 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
       
-      - name: dockerBuild
+      - name: dockerpull
         run: docker pull ${{inputs.fromecrHost}}/${{inputs.ecrName}}
 
-      - name: dockerPush
-        run: docker push ${{inputs.ecrHost}}/${{inputs.ecrName}}
+      - name: dockerReTag
+        run: docker tag ${{inputs.fromecrHost}}/${{inputs.ecrName}} ${{inputs.toecrHost}}/${{inputs.ecrName}}
+
+      - name: dockerpushTaggedimage
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }} 
+          docker_username: AWS
+          docker_password: ${{inputs.toecrHost}}

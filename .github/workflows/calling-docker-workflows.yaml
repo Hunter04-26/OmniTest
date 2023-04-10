@@ -18,3 +18,12 @@ jobs:
       dockerFilePath: Dockerfile
       ecrHost: 916080180725.dkr.ecr.us-east-1.amazonaws.com
       ecrName: diliptest
+  PullandPush:
+    uses: ./.github/workflows/docker-push.yaml
+    with:
+      AWSRoleToAssume: arn:aws:iam::916080180725:root
+      AWSRegion: us-east-1
+      dockerFilePath: Dockerfile
+      fromecrHost: 916080180725.dkr.ecr.us-east-1.amazonaws.com
+      toecrHost: 916080180725.dkr.ecr.us-east-1.amazonaws.com
+      ecrName: diliptest
