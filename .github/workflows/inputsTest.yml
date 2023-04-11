@@ -7,8 +7,8 @@ on:
         description: our names
         required: true
         type: choice
-        options:
-          - "Dilip": description: 
+        options: 
+          - Dilip description
           - "Sindhu"
 jobs:
   Running:
