@@ -7,7 +7,7 @@ on:
       environment:
         required: true
         type: string
-        default: 'which env
+        default: 'which env'
       
       runs-on:
         default: ubuntu-latest
