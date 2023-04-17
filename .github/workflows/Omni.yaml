@@ -18,7 +18,7 @@ on:
       
       working-directory:
         description: pass in java version to allow different app requiring different java versions to reuse the same workflow, 
-          default to java 17
+          default to java 17, refer to link- https://github.com/Hunter04-26/OmniTest/edit/main/.github/workflows/Omni.yaml
         required: false
         type: string
         default: '.'
