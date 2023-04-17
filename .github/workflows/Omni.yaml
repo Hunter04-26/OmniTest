@@ -2,6 +2,7 @@ name: Dockerbuild Omni
 
 on:
   workflow_call:
+  workflow_dispatch:
     inputs:
       # pass in environment through manual trigger, if not passed in, default to 'dev'
       environment:
