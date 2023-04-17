@@ -17,6 +17,8 @@ on:
         required: false
       
       working-directory:
+        description: pass in java version to allow different app requiring different java versions to reuse the same workflow, 
+          default to java 17
         required: false
         type: string
         default: '.'
