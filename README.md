@@ -1,3 +1,3 @@
 # OmniTest
 
-:warning please fill all the deatails
+⚠️ please fill all the deatails
